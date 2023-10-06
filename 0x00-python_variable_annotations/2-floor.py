@@ -4,6 +4,8 @@
 A type-annotated functiion.
 """
 
+import math
+
 
 def floor(n: float) -> int:
     """
