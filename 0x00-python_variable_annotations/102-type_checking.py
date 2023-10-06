@@ -7,11 +7,11 @@ A type-annotated function.
 from typing import Tuple, List
 
 
-def zoom_array(lst: Tuple, factor: int = 2) -> Tuple:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """
     using `mypy` for validation.
     """
-    zoomed_in: Tuple = tuple(item for item in lst for i in range(factor))
+    zoomed_in: List = [item for item in lst for i in range(factor)]
     return zoomed_in
 
 
