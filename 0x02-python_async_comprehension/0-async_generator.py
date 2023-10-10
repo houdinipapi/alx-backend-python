@@ -6,10 +6,10 @@ A coroutine that takes no argument.
 
 from asyncio import sleep
 from random import uniform
-from typing import AsyncGenerator, Generator
+from typing import Generator
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> Generator[float, None, None]:
     """
     Asynchronous generator that yields random numbers between 0 and 10.
 
@@ -22,4 +22,4 @@ async def async_generator() -> AsyncGenerator[float, None]:
 
     for _ in range(10):
         await sleep(1)
-        yield uniform(0, 10)
+        yield random() * 10
