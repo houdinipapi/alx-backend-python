@@ -4,8 +4,8 @@
 A coroutine that takes no argument.
 """
 
-import asyncio
-import random
+from asyncio import sleep
+from random import uniform
 from typing import AsyncGenerator, Generator
 
 
@@ -21,5 +21,5 @@ async def async_generator() -> AsyncGenerator[float, None]:
     """
 
     for _ in range(10):
-        await asyncio.sleep(1)
-        yield random.uniform(0, 10)
+        await sleep(1)
+        yield uniform(0, 10)
