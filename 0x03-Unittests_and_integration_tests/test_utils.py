@@ -5,8 +5,10 @@ Unit Test
 """
 
 import unittest
+import requests
 from parameterized import parameterized
-from utils import access_nested_map
+from unittest.mock import patch
+from utils import (access_nested_map, get_json, memoize)
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -37,7 +39,7 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         Test that a KeyError is raised for the respective inputs
         """
-        with self.assertRaises(KeyError) as context:
+        with self.assertRaises(KeyError) as e:
             access_nested_map(nested_map, path)
         self.assertEqual(f"KeyError('{expected_exception_message}')",
-                         repr(context.exception))
+                         repr(e.exception))
