@@ -8,7 +8,7 @@ import unittest
 import requests
 from parameterized import parameterized
 from unittest.mock import patch
-from utils import (access_nested_map, get_json, memoize)
+from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -31,16 +31,14 @@ class TestAccessNestedMap(unittest.TestCase):
 
     @parameterized.expand(
         [
-            ({}, ("a",), 'a'),
-            ({"a": 1}, ("a", "b"), 'b')
-        ]
-    )
+            ({}, ("a",), "a"),
+            ({"a": 1}, ("a", "b"), "b")])
     def test_access_nested_map_exception(
-        self, nested_map, path, expected_exception_message
-    ):
+            self, nested_map, path, expected_result
+            ):
         """
         Test that a KeyError is raised for the respective inputs
         """
-        with self.assertRaises(KeyError) as context:
+        with self.assertRaises(KeyError) as e:
             access_nested_map(nested_map, path)
-        self.assertEqual(str(context.exception), excepted_exception_message)
+        self.assertEqual(f"KeyError('{expected_result}')", repr(e.exception))
